@@ -67,18 +67,22 @@ export default {
                     }
                 }`
             )
-            this.matchingItems = (response.data.products.items ?? [])
-                .filter(item => !this.isUnconfigured(item))
-                .map(item => item.sku)
+            let matchingItems = Object.fromEntries((response.data.products.items ?? []).map(item => [item.sku, item]))
 
-            this.unconfiguredItems = (response.data.products.items ?? [])
-                .filter(item => this.isUnconfigured(item))
-                .map(item => item.sku)
+            this.matchingItems = this.transformedItems
+                .filter(item => item.sku in matchingItems)
+                .filter(item => !this.isUnconfigured(item, matchingItems[item.sku]))
+                .map(this.itemId)
+
+            this.unconfiguredItems = this.transformedItems
+                .filter(item => item.sku in matchingItems)
+                .filter(item => this.isUnconfigured(item, matchingItems[item.sku]))
+                .map(this.itemId)
 
             this.loading = false
         },
 
-        isUnconfigured(currentItem) {
+        isUnconfigured(item, currentItem) {
             let options = (currentItem.options ?? [])
                 .filter(option => option.required)
 
@@ -86,7 +90,6 @@ export default {
                 return false
             }
 
-            let item = this.transformedItems.find(item => item.sku == currentItem.sku)
             if (item && (item.entered_options || item.selected_options)) {
                 return false
             }
@@ -109,8 +112,8 @@ export default {
                     ` + config.fragments.cart,
                     {
                         cartId: cartMask.value,
-                        cartItems: this.selectedItems.map((sku) => {
-                            let item = this.transformedItems.find(item => item.sku == sku)
+                        cartItems: this.selectedItems.map((id) => {
+                            let item = this.transformedItems.find((item, index) => this.itemId(item, index) == id)
                             return item
                         }),
                     },
@@ -142,11 +145,16 @@ export default {
                 return item
             }
 
-            // TODO: Support selected_options and entered_options from quote item data
             return {
+                selected_options: item.selected_options ?? undefined,
+                entered_options: item.entered_options ?? undefined,
                 quantity: item.quantity_ordered,
                 sku: item.product_sku,
             }
+        },
+
+        itemId(item, id) {
+            return btoa(`${this.transformItem(item).sku}|${id}`)
         },
     },
 
