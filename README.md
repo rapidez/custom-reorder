@@ -1,6 +1,10 @@
 # Rapidez custom reorder
 
-This package allows you to replace the standard Rapidez re-order functionality with a custom variant. Note that this will require some manual work, see [usage](#usage).
+This package allows you to replace the standard Rapidez re-order functionality with a custom variant. This custom variant allows individual products to be selected, and also allows orders to be re-ordered that come from a different store (so long as the SKUs match up).
+
+![](images/custom-reorder.png)
+
+Note that this will require some manual work, see [usage](#usage).
 
 ## Installation
 
