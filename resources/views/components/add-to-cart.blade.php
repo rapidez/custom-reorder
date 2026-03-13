@@ -1,6 +1,6 @@
 @props(['component' => 'rapidez::button.conversion'])
 
-<div {{ $attributes->class('border-t flex p-2 sticky bottom-0 bg-white items-center') }}>
+<div {{ $attributes->class('border-t border-gray-200 flex p-2 sticky bottom-0 bg-white items-center') }}>
     <div>
         <template v-if="reorderSlotScope.selectedItems.length == 1">
             @lang(':count product selected', ['count' => '@{{ reorderSlotScope.selectedItems.length }}'])
