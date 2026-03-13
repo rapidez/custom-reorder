@@ -1,13 +1,13 @@
 <div
     class="flex w-full"
     v-bind:class="{
-        'opacity-50 !cursor-not-allowed': !reorderSlotScope.loading && !reorderSlotScope.matchingItems.includes(reorderSlotScope.itemId(item, index)),
+        'opacity-50 cursor-not-allowed!': !reorderSlotScope.loading && !reorderSlotScope.matchingItems.includes(reorderSlotScope.itemId(item, index)),
     }"
 >
     <template v-if="reorderSlotScope.canReorder(item)">
         <label
             class="flex items-center cursor-pointer pr-3"
-            v-bind:class="{ '!cursor-not-allowed': !reorderSlotScope.loading && !reorderSlotScope.matchingItems.includes(reorderSlotScope.itemId(item, index)) }"
+            v-bind:class="{ 'cursor-not-allowed!': !reorderSlotScope.loading && !reorderSlotScope.matchingItems.includes(reorderSlotScope.itemId(item, index)) }"
         >
             <x-rapidez::input.checkbox
                 class="border-emphasis"
