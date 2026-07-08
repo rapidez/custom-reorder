@@ -159,7 +159,7 @@ export default {
         },
 
         itemUrl(item) {
-            return this.urls[item.product_sku]
+            return this.urls[item.product_sku] ?? null
         },
 
         itemId(item, id) {
