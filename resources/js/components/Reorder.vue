@@ -19,6 +19,7 @@ export default {
             selectedItems: [],
             matchingItems: [],
             unconfiguredItems: [],
+            urls: {},
             adding: false,
             added: false,
         }
