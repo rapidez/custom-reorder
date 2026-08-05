@@ -19,6 +19,7 @@ export default {
             selectedItems: [],
             matchingItems: [],
             unconfiguredItems: [],
+            urls: {},
             adding: false,
             added: false,
         }
@@ -61,6 +62,7 @@ export default {
                     ) {
                         items {
                             sku
+                            url_rewrites { url }
                             __typename
                             ... on CustomizableProductInterface { options { required } }
                         }
@@ -78,6 +80,10 @@ export default {
                 .filter(item => item.sku in matchingItems)
                 .filter(item => this.isUnconfigured(item, matchingItems[item.sku]))
                 .map(this.itemId)
+
+            this.urls = Object.fromEntries((response.data.products.items ?? []).map(item =>
+                [item.sku, item.url_rewrites?.length ? url('/' + item.url_rewrites[0].url) : null]
+            ))
 
             this.loading = false
         },
@@ -151,6 +157,10 @@ export default {
                 quantity: item.quantity_ordered,
                 sku: item.product_sku,
             }
+        },
+
+        itemUrl(item) {
+            return this.urls[item.product_sku] ?? null
         },
 
         itemId(item, id) {

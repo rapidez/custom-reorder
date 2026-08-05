@@ -43,6 +43,8 @@ This package will not work out of the box, however it contains a few blade compo
 
 - Optionally, you can show why certain items are grayed out using the `x-rapidez-reorder::availability` component. You can place this anywhere in the list of items, but our recommendation would be to place this below the product options and/or the SKU.
 
+- You can also use the `x-rapidez-reorder::product-anchor` component that will turn into an anchor tag with the correct URL if it exists and is set.
+
 - Finally, you need to add the `x-rapidez-reorder::button.add-to-cart` component at the very bottom of the `reorderable` component. You can use `reorderSlotScope.added` as a Vue variable to determine what text your button should show. Note that this component is sticky by default, so adjust your frontend accordingly if needed. For example:
 ```blade
         [...]
