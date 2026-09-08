@@ -1,6 +1,12 @@
 # Changelog 
 
-[Unreleased changes](https://github.com/rapidez/custom-reorder/compare/2.1.0...2.1.0)
+[Unreleased changes](https://github.com/rapidez/custom-reorder/compare/2.1.1...2.1.1)
+## [2.1.1](https://github.com/rapidez/custom-reorder/releases/tag/2.1.1) - 2026-09-08
+
+### Fixed
+
+- Fixed undefined is not an object (#5)
+
 ## [2.1.0](https://github.com/rapidez/custom-reorder/releases/tag/2.1.0) - 2026-08-05
 
 ### Added
