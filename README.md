@@ -48,10 +48,10 @@ This package will not work out of the box, however it contains a few blade compo
 - Finally, you need to add the `x-rapidez-reorder::button.add-to-cart` component at the very bottom of the `reorderable` component. You can use `reorderSlotScope.added` as a Vue variable to determine what text your button should show. Note that this component is sticky by default, so adjust your frontend accordingly if needed. For example:
 ```blade
         [...]
-        <x-rapidez-reorder::button.add-to-cart>
+        <x-rapidez-reorder::add-to-cart>
             <template v-if="reorderSlotScope.added">@lang('Added')</template>
             <template v-else>@lang('Add to cart')</template>
-        </x-rapidez-reorder::button.add-to-cart>
+        </x-rapidez-reorder::add-to-cart>
     </x-rapidez-reorder::reorderable>
 ```
 
