@@ -2,8 +2,8 @@
 
 <x-dynamic-component
     :$component
-    v-bind:disabled="$root.loading"
-    v-on:click="$root.$emit('reorder-all', true)"
+    v-bind:disabled="$root.loading.value"
+    v-on:click="window.$emit('rapidez:reorder-all', true)"
 >
     {{ $slot }}
 </x-dynamic-component>

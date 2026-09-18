@@ -10,7 +10,7 @@ export default {
         }
     },
     render() {
-        return this.$scopedSlots.default(this)
+        return this?.$slots?.default(this)
     },
 
     data() {
@@ -30,7 +30,7 @@ export default {
             this.getMatchingProducts()
         }
 
-        this.$root.$on('reorder-all', () => {
+        window.$on('rapidez:reorder-all', () => {
             this.selectedItems = [...this.matchingItems]
         })
     },
