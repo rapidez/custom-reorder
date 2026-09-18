@@ -1,6 +1,12 @@
 # Changelog 
 
-[Unreleased changes](https://github.com/rapidez/custom-reorder/compare/2.1.1...2.1.1)
+[Unreleased changes](https://github.com/rapidez/custom-reorder/compare/2.1.2...2.1.2)
+## [2.1.2](https://github.com/rapidez/custom-reorder/releases/tag/2.1.2) - 2026-09-18
+
+### Fixed
+
+- Vue 3 upgrade fixes (#6)
+
 ## [2.1.1](https://github.com/rapidez/custom-reorder/releases/tag/2.1.1) - 2026-09-08
 
 ### Fixed
